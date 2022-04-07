@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Router, Switch } from 'react-router-dom';
-import Login  from './components/LoginPage/Login';
+import {Login}  from './components/LoginPage/Login';
 import ForgotPassword from './components/ForgotPage/ForgotPassword';
 import SetNewPass from './components/SetNewPasswordPage/SetNewPass';
 import Sidebar from './components/SideBar/SideBar';
@@ -9,6 +9,9 @@ import { Facilities } from './components/FacilitiesPage/Facilities';
 import { Service } from './components/ServicePage/Service';
 import { Number } from './components/NumberPage/Number';
 import { Report } from './components/ReportPage/Report';
+import { Role } from './components/RolePage/Role';
+import { Account } from './components/AccountPage/Account';
+import AccountUser from './components/AccountUserPage/AccountUser';
 
 
 
@@ -26,6 +29,8 @@ render(){
       <Route path="/service" component={Service}/>
       <Route path="/number" component={Number}/>
       <Route path="/report" component={Report}/>
+      <Route path="/role" component={Role}/>
+      <Route path="/account-user" component={AccountUser}/>
     </Switch>
     </BrowserRouter>
  

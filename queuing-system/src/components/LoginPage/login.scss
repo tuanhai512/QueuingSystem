@@ -7,17 +7,17 @@
 }
 .formLogin {
   margin-top: 15%;
- span{
-  a {
-    margin-left: 15%;
-    color: #ff7506;
-    font-family: "Nunito";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 19px;
-    line-height: 21px;
+  span {
+    a {
+      margin-left: 15%;
+      color: #ff7506;
+      font-family: "Nunito";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 19px;
+      line-height: 21px;
+    }
   }
- } 
   .ant-form-item {
     margin-bottom: 3%;
     p {
@@ -47,6 +47,57 @@
     width: 500px;
     height: 50px;
     border-radius: 5px;
+    &.error {
+      border: 1px solid red;
+    }
+  }
+  .errorLogin {
+    span{
+      margin-left: 26%;
+    }
+    &.message {
+      color: red;
+      display: flex;
+      position: relative;
+    left: 16%;
+    span{
+      margin-left: 0;
+    }
+    svg{
+      height: 20px;
+      width: 20px;
+    }
+      h2 {
+        color: red;
+        font-size: 18px;
+        font-family: "Nunito";
+        font-style: normal;
+        font-weight: 400;
+        line-height: 21px;
+      }
+
+    }
+    &.btnLogin {
+      display: flex;
+      justify-content: center;
+      margin-top: 5%;
+      margin-bottom:3%;
+      .ant-btn-default {
+        width: 200px;
+        height: 50px;
+        background-color: #ff7506;
+        color: white;
+        border: 0;
+        border-radius: 8px;
+        a {
+          font-family: "Nunito";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 24px;
+        }
+      }
+    }
   }
   .ant-form-item-control-input-content {
     margin-left: 15%;
@@ -59,6 +110,10 @@
     .ant-input {
       height: auto;
     }
+    &.error {
+      border: 1px solid red;
+    }
+   
   }
 }
 
@@ -95,12 +150,13 @@
     }
   }
 }
+
 .btnLogin {
   display: flex;
   justify-content: center;
   margin-top: 5%;
   .ant-btn-default {
-    width: 180px;
+    width: 200px;
     height: 50px;
     background-color: #ff7506;
     color: white;

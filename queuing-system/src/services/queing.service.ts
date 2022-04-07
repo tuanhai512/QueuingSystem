@@ -1,6 +1,5 @@
 import React from 'react'
 import firebase from "../firebase/config";
-const db = firebase.collection("/user");
 class QueingDataService {
     // getAll() {
     //     return db;
