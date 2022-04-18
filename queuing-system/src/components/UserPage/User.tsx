@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { FC } from 'react'
 import SideBar from '../SideBar/SideBar'
 
 type Props = {}
 
-export const User = (props: Props) => {
+export const User:FC = (props: Props) => {
   return (
       <>
       <SideBar/>

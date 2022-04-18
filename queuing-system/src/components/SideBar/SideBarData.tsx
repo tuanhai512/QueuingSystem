@@ -53,28 +53,28 @@ export const SideBarData: SideBarItem[] = [
     },
     {
         title:'Cài đặt hệ thống',
-        path:'#',
+        path: "/setting",
         iconOpened:<AiOutlineMore/>,
         iconClosed:<AiOutlineMore/>,
         icon: <SvgSetting/>,
         subnav:[
            {
             title:'Quản lý vai trò',
-            path:'/Role',
+            path:'/setting/role',
             iconOpened:"",
             iconClosed:"",
             icon: <MdOutlineDashboard/>,
            },
            {
             title:'Quản lý tài khoản',
-            path:'/Account',
+            path:'/setting/account',
             iconOpened:"",
             iconClosed:"",
             icon: <MdOutlineDashboard/>,
            },
            {
             title:'Nhật ký người dùng',
-            path:'/User',
+            path:'/setting/user',
             iconOpened:"",
             iconClosed:"",
             icon: <MdOutlineDashboard/>,

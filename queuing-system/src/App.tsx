@@ -9,9 +9,9 @@ import { Facilities } from './components/FacilitiesPage/Facilities';
 import { Service } from './components/ServicePage/Service';
 import { Number } from './components/NumberPage/Number';
 import { Report } from './components/ReportPage/Report';
-import { Role } from './components/RolePage/Role';
-import { Account } from './components/AccountPage/Account';
-import AccountUser from './components/AccountUserPage/AccountUser';
+import { Setting } from './components/SettingPage/Setting';
+import { AccountUser } from './components/AccountUserPage/AccountUser';
+import chart from './components/DashboardPage/Chart/ChartWeek';
 
 
 
@@ -29,8 +29,9 @@ render(){
       <Route path="/service" component={Service}/>
       <Route path="/number" component={Number}/>
       <Route path="/report" component={Report}/>
-      <Route path="/role" component={Role}/>
+      <Route path="/setting" component={Setting} />
       <Route path="/account-user" component={AccountUser}/>
+      <Route path="/chart" component={chart}/>
     </Switch>
     </BrowserRouter>
  

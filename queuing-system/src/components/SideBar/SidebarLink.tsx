@@ -1,20 +1,21 @@
 import React, { FC, useState } from "react";
 import { SideBarItem } from "./SideBarItem";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { RiChatHistoryLine } from "react-icons/ri";
+import { SideBarData } from "./SideBarData";
+import { MdFollowTheSigns } from "react-icons/md";
 
 type SideBarLinkProp = {
   item: SideBarItem;
 };
 
 const SidebarLink: FC<SideBarLinkProp> = ({ item }) => {
-  const [subNav, setSubNav] = useState<Boolean>(false);
-  const showSubNav = () => setSubNav(!subNav);
+ 
 
   return (
     <>
-      <Link to={item.path} >
-        <div className="submenu">
+      <NavLink to={item.path} className="link" exact >
+        <div className= "submenu">
           <div className="icon"> {item.icon} </div>
           <div className="title">
             <a> {item.title}</a>
@@ -22,28 +23,26 @@ const SidebarLink: FC<SideBarLinkProp> = ({ item }) => {
           <div className="iconSubNav">
             {item?.subnav ? item.iconOpened : item.iconClosed}
           </div>
-          <div className="groupNav">
-          {
-            item?.subnav?.map((item, index) => {
-              return (
-                <div className="groupNav subNav">
-                  <Link to={item.path} key={index}>
-                    <div className="groupNav subNav title">
-           
-                      <h2> {item.title} </h2>
-                    </div>
-                  </Link>
-                </div>
-              );
-            })}
-        </div>
-        </div>
 
-      </Link>
-
-    
-       
-      
+          {item?.subnav !== undefined ? (
+            <div className="groupNav">
+              {item?.subnav?.map((item, index) => {
+                return (
+                  <div className="groupNav subNav">
+                    <NavLink to={item.path} key={index} className="linkSub">
+                      <div className="groupNav subNav titleSubNav">
+                        <h2> {item.title} </h2>
+                      </div>
+                    </NavLink>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <></>
+          )}
+        </div>
+      </NavLink>
     </>
   );
 };
