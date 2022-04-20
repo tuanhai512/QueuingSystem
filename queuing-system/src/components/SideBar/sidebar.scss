@@ -55,8 +55,10 @@
   display: flex;
   float: left;
   position: relative;
+  z-index: 99;
   top: 8%;
   .groupNav {
+    background-color: white;
     filter: drop-shadow(3px 3px 4px rgba(70, 64, 67, 0.1));
     border-radius: 12px;
     left: 100%;
@@ -65,6 +67,7 @@
     width: 300px;
     display: none;
     border: 1px solid rgba(219, 219, 219, 0.5);
+    z-index: 99;
     &.subNav {
       border: 0 !important;
       filter: none;
@@ -159,7 +162,7 @@
   &.active{
     .submenu{
       background-color: #FF7506 !important;
-  
+      z-index: 99;
       
        a,
     .icon,

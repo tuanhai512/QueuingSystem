@@ -1,20 +1,21 @@
-import React, { FC } from 'react'
-import SideBar from '../SideBar/SideBar'
-import { AiFillPlusSquare } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
-import { TableAccount } from './TableAccount';
 import { Input, Select } from 'antd';
 import { Option } from 'antd/lib/mentions';
+import React, { FC } from 'react'
+import { AiFillPlusSquare } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
+import SideBar from '../SideBar/SideBar'
+import { TableDiary } from './TableDiary';
 
+type Props = {}
 
-export const Account: FC = () => {
+export const Diary:FC = (props: Props) => {
   return (
-   <>
-   <SideBar/>
-   <div className="facility">
+      <>
+      <SideBar/>
+      <div className="facility">
         <div className="facility_title">
-          <span className="facility_title-L">Báo cáo <img src={require("../../assets/arrowTitle.png")} alt="" /> </span> 
-          <span className="facility_title-R"> Lập báo cáo</span>
+          <span className="facility_title-L">Cài đặt hệ thống <img src={require("../../assets/arrowTitle.png")} alt="" /> </span> 
+          <span className="facility_title-R"> Nhật ký hoạt động</span>
         </div>
         <div className="facility_top">
         
@@ -53,14 +54,13 @@ export const Account: FC = () => {
           </div>
           </div>   
           <div className="facility_top--table">
-            <TableAccount/>
+            <TableDiary/>
           </div>
         </div>
-        <Link to="/add-Facility" className="facility_top--addBtn">
-          <AiFillPlusSquare/>
-            <a href="/add-Facility">Thêm tài khoản</a> 
-            </Link>
+       
       </div>
    </> 
+   
   )
 }
+

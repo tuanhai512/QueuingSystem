@@ -3,8 +3,9 @@ import { Form, Input, Button, Checkbox, Space } from "antd";
 import logoAlta from "../../assets/Logoalta.png";
 import styles from "./login.scss";
 import { Link, useHistory } from "react-router-dom";
-import { auth } from "../../firebase/config";
 import { RiErrorWarningLine } from "react-icons/ri";
+import { auth } from "../../firebase/config.js";
+
 
 export const LoginLeft: FC = () => {
   const [authenticating, setAuthenticating] = useState<boolean>(false);
@@ -17,14 +18,13 @@ export const LoginLeft: FC = () => {
   const signInWithEmailAndPassword = () => {
     if (error !== "") setError("");
     setAuthenticating(true);
-    auth
-      .signInWithEmailAndPassword(email, password)
-      .then((result) => {
+   auth.signInWithEmailAndPassword(email, password)
+      .then((result:any) => {
         console.log(result);
         setValide(false);
         history.push("/Dashboard");
       })
-      .catch((error) => {
+      .catch((error:any) => {
         console.log(error);
         setValide(true);
         setAuthenticating(false);

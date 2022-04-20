@@ -42,7 +42,9 @@ export const Dashboard: FC = () => {
     <>
       <SideBar />
       <div className="dashboard">
-        <div className="dashboard dashL">
+      <div className="dashboard_title"><h1> Dashboard </h1> </div>
+      <div className="dashboard titleDash"> <h1> Biểu đồ cấp số </h1></div>  
+        <div className="dashboard dashL">   
           <div className="dashboard dashL_top" >
           <CardActive/>
           <CardWaiting/>
@@ -52,13 +54,14 @@ export const Dashboard: FC = () => {
           <div className="dashboard dashL_bottom">
             <div className="dashboard dashL_bottom_top">
               <div className="dashboard dashL_bottom_top--title">
-                <span>Bảng thống kê hằng ngày</span>
-                <span>11/12/2021</span>
+                <span className="dashboard dashL_bottom_top--title-top">Bảng thống kê hằng ngày</span>
+                <span className="dashboard dashL_bottom_top--title-bottom">Tháng 12/2021</span>
               </div>
 
-              <div className="dasboard dashL_bottom_top--select">
-                <span> Xem theo</span>
+              <div className="dashboard dashL_bottom_top--select">
+                <span className="dashboard dashL_bottom_top--select-title"> Xem theo</span>
                 <Select
+                suffixIcon={<img src={require("../../assets/arrow.png")}/>}
                   labelInValue
                   defaultValue={{ value: "day" }}
                   style={{ width: 120 }}

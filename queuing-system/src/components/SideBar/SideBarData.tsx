@@ -74,7 +74,7 @@ export const SideBarData: SideBarItem[] = [
            },
            {
             title:'Nhật ký người dùng',
-            path:'/setting/user',
+            path:'/setting/diary',
             iconOpened:"",
             iconClosed:"",
             icon: <MdOutlineDashboard/>,

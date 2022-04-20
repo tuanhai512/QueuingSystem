@@ -3,40 +3,112 @@
   height: 100%;
   display: block;
   float: left;
- 
+  z-index: 1;
+  &_title {
+    height: 10px;
+    position: relative;
+    top: 3%;
+    left: 6%;
+    h1 {
+      font-family: "Nunito";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 26px;
+      line-height: 30px;
+      color: #ff9138;
+    }
+  }
+  &.titleDash {
+    height: 10px;
+    position: relative;
+    top: 10%;
+    left: 6%;
+    h1 {
+      font-family: "Nunito";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 36px;
+      color: #ff7506;
+    }
+  }
   &.dashL {
-    background-color: #e0dede !important;
-    width: 1265px;
+    background-color: #eeeeee !important;
+    width: 1250px;
     display: flex;
     justify-content: center;
-   &_top{
-    width: 1200px !important;
-    height: auto;
-    display: flex;
-    justify-content: space-between;
-   }
-    &_bottom{
+    margin-top: -19px;
+    &_top {
+      width: 1200px !important;
+      height: auto;
+      display: flex;
+      justify-content: space-between;
+      &--title {
+        height: 50px !important;
+      }
+    }
+    &_bottom {
       background-color: white !important;
       position: absolute !important;
       border-radius: 15px;
       bottom: 26px;
-     
+
       padding-right: 54px;
       width: 1200px !important;
       height: 600px !important;
-      &_top{
+      &_top {
         height: 100px !important;
         display: flex;
-        &--title{
+        &--title {
           display: grid;
+          &-top {
+            margin-top: 10px;
+            margin-left: 15px;
+            font-family: "Nunito";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 22px;
+            line-height: 30px;
+            color: #282739;
+          }
+          &-bottom {
+            margin-left: 15px;
+            font-family: "Nunito";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 21px;
+            color: #a9a9b0;
+          }
         }
-        &--select{
-          width: 100%;
-          
+        &--select {
+          top: 5%;
+          left: 80%;
+          position: relative;
+          display: -webkit-box;
+          &-title {
+            margin-top: 10px;
+            width: 100px;
+            font-family: "Nunito";
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 24px;
+            color: #282739;
+          }
+        }
+
+        .ant-select-selector {
+          justify-content: space-between;
+          align-items: center;
+          height: 45px;
+          border: 1.5px solid #d4d4d7;
+         border-radius: 8px;
+          flex: none;
         }
       }
     }
-    .line-chart{
+    .line-chart {
       height: 80% !important;
     }
   }
@@ -62,15 +134,14 @@
       .title {
         left: 24px;
         width: auto;
-        h1{
-          font-family: 'Nunito';
+        h1 {
+          font-family: "Nunito";
           font-style: normal;
           font-weight: 700;
           font-size: 24px;
-          line-height: 36px;      
-          color: #FF7506;   
+          line-height: 36px;
+          color: #ff7506;
         }
-        
       }
       .chart {
         margin-top: 80px;
@@ -98,7 +169,6 @@
       }
       .react-calendar__navigation {
         height: 90px;
-        
       }
       .react-calendar__navigation__label {
         border-bottom: 1px solid;
@@ -116,7 +186,7 @@
       .react-calendar__navigation__next2-button {
         display: none;
       }
-      .react-calendar__month-view__days__day{
+      .react-calendar__month-view__days__day {
         line-height: 27px;
       }
       .react-calendar__month-view__days__day--weekend {

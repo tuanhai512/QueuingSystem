@@ -12,6 +12,9 @@ import { Report } from './components/ReportPage/Report';
 import { Setting } from './components/SettingPage/Setting';
 import { AccountUser } from './components/AccountUserPage/AccountUser';
 import chart from './components/DashboardPage/Chart/ChartWeek';
+import { AddFacility } from './components/FacilitiesPage/addFacility';
+import { DetailFacility } from './components/FacilitiesPage/detailFacility';
+import { UpdateFacility } from './components/FacilitiesPage/updateFacility';
 
 
 
@@ -32,6 +35,9 @@ render(){
       <Route path="/setting" component={Setting} />
       <Route path="/account-user" component={AccountUser}/>
       <Route path="/chart" component={chart}/>
+      <Route path="/add-facility" component={AddFacility}/>
+      <Route path="/detailFacility" component={DetailFacility}/>
+      <Route path="/updateFacility" component={UpdateFacility}/>
     </Switch>
     </BrowserRouter>
  
