@@ -1,15 +1,15 @@
-import React, { FC, useEffect, useState } from "react";
-import { devicesCollection } from "./TableFacillity";
-import { Link } from "react-router-dom";
-import SideBar from "../SideBar/SideBar";
 import { Col, Form, Row } from "antd";
+import React, { FC, useState } from "react";
 import { AiFillPlusSquare } from "react-icons/ai";
-import AccountUserLeft from "../AccountUserPage/AccountUserLeft";
+import { BsDot } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import SvgNotification from "../../assets/iconComponent/notification";
+import AccountUserLeft from "../AccountUserPage/AccountUserLeft";
+import SideBar from "../SideBar/SideBar";
 
 type Props = {};
 
-export const DetailFacility: FC = (props: Props) => {
+export const DetailNumber: FC = ({}: Props) => {
   const [open, setOpen] = useState<boolean>(false);
   const notify = [
     {
@@ -37,7 +37,6 @@ export const DetailFacility: FC = (props: Props) => {
       time: "12h20 ngày 30/11/2021",
     },
   ];
-
   return (
     <>
       <SideBar />
@@ -47,13 +46,13 @@ export const DetailFacility: FC = (props: Props) => {
             Thiết bị <img src={require("../../assets/arrowTitle.png")} alt="" />
           </span>
           <span className="facility_title-L">
-            Danh sách thiết bị
+            Danh sách cấp số
             <img src={require("../../assets/arrowTitle.png")} alt="" />
           </span>
-          <span className="facility_title-R"> Chi tiết thiết bị</span>
+          <span className="facility_title-R"> Chi tiết </span>
           <span>
             <span
-              className="iconNotificationC"
+              className="iconNotificationN"
               onClick={() => setOpen((open) => !open)}
             >
               <SvgNotification />
@@ -85,35 +84,43 @@ export const DetailFacility: FC = (props: Props) => {
           </span>
         </div>
         <div className="facility_contentT">
-          <h1> Quản lý thiết bị</h1>
+          <h1> Quản lý cấp số</h1>
         </div>
         <div className="formDetail">
           <Row>
             <Col span={24} className="title">
               {" "}
-              <h1>Thông tin thiết bị</h1>
+              <h1>Thông tin cấp số</h1>
             </Col>
           </Row>
           <Row>
             <Col span={12}>
               <Form>
                 <Form.Item>
-                  <p className="formDetail_title">Mã thiết bị</p>
-                  <p className="formDetail_content">K0_01</p>
+                  <p className="formDetail_title">Họ tên:</p>
+                  <p className="formDetail_content">Nguyễn Thị Dung</p>
                 </Form.Item>
                 <Form.Item>
-                  <p className="formDetail_title">Tên thiết bị</p>
-                  <p className="formDetail_content">Kiosk</p>
+                  <p className="formDetail_title">Tên dịch vụ:</p>
+                  <p className="formDetail_content">Khám tim mạch</p>
                 </Form.Item>
                 <Form.Item>
-                  <p className="formDetail_title">Địa chỉ IP</p>
-                  <p className="formDetail_content">128.172.308</p>
+                  <p className="formDetail_title">Số thứ tự:</p>
+                  <p className="formDetail_content">2001201</p>
+                </Form.Item>
+                <Form.Item>
+                  <p className="formDetail_title">Thời gian cấp:</p>
+                  <p className="formDetail_content">14:35 - 07/11/2021</p>
+                </Form.Item>
+                <Form.Item>
+                  <p className="formDetail_title">Hạn sử dụng:</p>
+                  <p className="formDetail_content">18:00 - 07/11/2021</p>
                 </Form.Item>
               </Form>
             </Col>
             <Col span={12}>
               <Form.Item>
-                <p className="formDetail_title">Loại thiết bị</p>
+                <p className="formDetail_title">Nguồn cấp:</p>
                 <p className="formDetail_content">Kiosk</p>
               </Form.Item>
               <Form.Item>
@@ -121,29 +128,26 @@ export const DetailFacility: FC = (props: Props) => {
                 <p className="formDetail_content">Linhkyo011</p>
               </Form.Item>
               <Form.Item>
-                <p className="formDetail_title">Mật khẩu</p>
-                <p className="formDetail_content">CMS</p>
+                <p className="formDetail_title">Trạng thái:</p>
+                <p className="formDetail_content">
+                  {" "}
+                  <BsDot /> Đang chờ
+                </p>
+              </Form.Item>
+              <Form.Item>
+                <p className="formDetail_title">Số điện thoại:</p>
+                <p className="formDetail_content">0948523623</p>
+              </Form.Item>
+              <Form.Item>
+                <p className="formDetail_title">Địa chỉ Email:</p>
+                <p className="formDetail_content">nguyendung@gmail.com</p>
               </Form.Item>
             </Col>
           </Row>
-          <Row>
-            <Col span={24}>
-              {" "}
-              <Form.Item>
-                <p className="formDetail_titleS">Dịch vụ sử dụng </p>{" "}
-              </Form.Item>{" "}
-            </Col>
-            <Col span={24}>
-              {" "}
-              <Form.Item>
-                <p className="formDetail_contentS">Khám tim mạch </p>{" "}
-              </Form.Item>{" "}
-            </Col>
-          </Row>
         </div>
-        <Link to="/updateFacility" className="facility_top--addBtn">
+        <Link to="/addNumber" className="facility_top--addBtn">
           <AiFillPlusSquare />
-          <a href="/updateFacility">Cập nhật thiết bị</a>
+          <a href="/addNumber">Quay lại</a>
         </Link>
       </div>
     </>

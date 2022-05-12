@@ -8,7 +8,6 @@ const AccountUserLeft = (props: Props) => {
   return (
     <div className="user content top topR">
     <div className="user content top topR ava">
-      <SvgNotification />
       <img width={45} height={45} src={ava} alt=""/>
       <div className="user content top topR username">
         <h3>Xin chào</h3>

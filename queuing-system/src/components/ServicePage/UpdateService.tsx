@@ -1,24 +1,19 @@
-import { Form, Row, Col, Input, Select, Button } from "antd";
-import { Option } from "antd/lib/mentions";
+import { Button, Checkbox, Col, Form, Input, Row } from "antd";
 import React, { FC, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SvgNotification from "../../assets/iconComponent/notification";
 import AccountUserLeft from "../AccountUserPage/AccountUserLeft";
 import SideBar from "../SideBar/SideBar";
-import { devicesCollection } from "./TableFacillity";
+import firebase from "./../../firebase/config";
 type Props = {};
 
-export const AddFacility: FC = ({}: Props) => {
-  const [name, setName] = useState<string>("");
-  const [id, setId] = useState<string>("");
-  const [address, setAddress] = useState<string>("");
-  const [type, setType] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [username, setUsername] = useState<string>("");
-  const [service, setService] = useState<string>("");
-  const [connect, setConnect] = useState<string>("");
-  const [active, setActive] = useState<string>("");
+const serviceCollection = firebase.firestore().collection("service");
+export const UpdateService: FC = (props: Props) => {
   const [open, setOpen] = useState<boolean>(false);
+  const [id, setId] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [des, setDes] = useState<string>("");
+  const [active, setActive] = useState<string>("");
   const notify = [
     {
       name: " Nguyễn Thị Thùy Dung",
@@ -45,41 +40,39 @@ export const AddFacility: FC = ({}: Props) => {
       time: "12h20 ngày 30/11/2021",
     },
   ];
-  function createFacility(newData: any) {
-    devicesCollection
-      .doc()
-      .set(newData)
-      .catch((err) => {
+  function updateService(newData: any) {
+    serviceCollection
+      .doc(id)
+      .update(newData)
+      .catch((err: any) => {
         alert(err);
         console.log(err);
       });
   }
-  function handleChange(e: any) {
-    setType(e.value);
-    console.log(e.value);
-  }
 
   useEffect(() => {
     setActive("Hoạt động");
-    setConnect("Kết nối");
   }, []);
-
   return (
     <>
       <SideBar />
       <div className="facility">
         <div className="facility_title">
           <span className="facility_title-L">
-            Thiết bị <img src={require("../../assets/arrowTitle.png")} alt="" />
+            Dịch vụ <img src={require("../../assets/arrowTitle.png")} alt="" />
           </span>
           <span className="facility_title-L">
-            Danh sách thiết bị
+            Danh sách dịch vụ
             <img src={require("../../assets/arrowTitle.png")} alt="" />
           </span>
-          <span className="facility_title-R"> Thêm mới thiết bị</span>
+          <span className="facility_title-L">
+            {" "}
+            Chi tiết <img src={require("../../assets/arrowTitle.png")} alt="" />
+          </span>
+          <span className="facility_title-R"> Cập nhật</span>
           <span>
             <span
-              className="iconNotificationC"
+              className="iconNotificationU"
               onClick={() => setOpen((open) => !open)}
             >
               <SvgNotification />
@@ -111,12 +104,12 @@ export const AddFacility: FC = ({}: Props) => {
           </span>
         </div>
         <div className="facility_contentT">
-          <h1> Quản lý thiết bị</h1>
+          <h1> Quản lý dịch vụ</h1>
         </div>
         <div className="formAdd">
           <Row>
             <Col span={24} className="title">
-              <h1>Thông tin thiết bị</h1>
+              <h1>Thông tin dịch vụ</h1>
             </Col>
           </Row>
           <Row>
@@ -124,7 +117,7 @@ export const AddFacility: FC = ({}: Props) => {
               <Form>
                 <Form.Item>
                   <p>
-                    Mã thiết bị<span>*</span>
+                    Mã dịch vụ<span>*</span>
                   </p>
                   <Input
                     type="id"
@@ -134,7 +127,7 @@ export const AddFacility: FC = ({}: Props) => {
                 </Form.Item>
                 <Form.Item>
                   <p>
-                    Tên thiết bị<span>*</span>
+                    Tên dịch vụ<span>*</span>
                   </p>
                   <Input
                     type="text"
@@ -142,71 +135,55 @@ export const AddFacility: FC = ({}: Props) => {
                     onChange={(e) => setName(e.target.value)}
                   />
                 </Form.Item>
-                <Form.Item>
-                  <p>
-                    Địa chỉ IP <span>*</span>
-                  </p>
-                  <Input
-                    type="text"
-                    placeholder="address"
-                    onChange={(e) => setAddress(e.target.value)}
-                  />
-                </Form.Item>
               </Form>
             </Col>
             <Col span={12}>
               <Form>
                 <Form.Item>
-                  <p>
-                    Loại<span>*</span>
-                  </p>
-                  <Select
-                    suffixIcon={<img src={require("../../assets/arrow.png")} />}
-                    labelInValue
-                    placeholder="Chọn loại thiết bị"
-                    style={{ width: "520px", borderRadius: "15px" }}
-                    onChange={handleChange}
-                  >
-                    <Option value="Kiosk">Kiosk</Option>
-                    <Option value="Kiosk2">Kiosk2</Option>
-                  </Select>
-                </Form.Item>
-                <Form.Item>
-                  <p>
-                    Tên đăng nhập<span>*</span>
-                  </p>
-                  <Input
-                    type="text"
+                  <p>Mô tả</p>
+                  <Input.TextArea
                     placeholder="username"
-                    onChange={(e) => setUsername(e.target.value)}
-                  />
-                </Form.Item>
-                <Form.Item>
-                  <p>
-                    Mật khẩu<span>*</span>
-                  </p>
-                  <Input
-                    type="text"
-                    placeholder="password"
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => setDes(e.target.value)}
                   />
                 </Form.Item>
               </Form>
             </Col>
           </Row>
           <Row>
-            <Col span={24}>
-              <Form.Item>
-                <p>
-                  Dịch vụ sử dụng<span>*</span>
-                </p>
-                <Input
-                  style={{ width: "92%" }}
-                  type="text"
-                  placeholder="service"
-                  onChange={(e) => setService(e.target.value)}
-                />
-              </Form.Item>
+            <Col span={24} className="title">
+              <h1>Quy tắc cấp số</h1>
+            </Col>
+
+            <Col className="colCB">
+              <Checkbox>
+                <span className="contentDB"> Tăng tự động từ </span>{" "}
+              </Checkbox>
+              <Input className="inputCB" />
+              <span className="contentDB">đến</span>
+              <Input className="inputCB" />
+            </Col>
+          </Row>
+          <Row>
+            <Col className="colCB">
+              <Checkbox>
+                <span className="contentDB"> Prefix </span>{" "}
+              </Checkbox>
+              <Input className="inputCB" />
+            </Col>
+          </Row>
+          <Row>
+            <Col className="colCB">
+              <Checkbox>
+                <span className="contentDB"> Surfix</span>{" "}
+              </Checkbox>
+              <Input className="inputCB" />
+            </Col>
+          </Row>
+          <Row>
+            <Col className="colCB">
+              <Checkbox>
+                <span className="contentDB"> Reset mỗi ngày </span>{" "}
+              </Checkbox>
             </Col>
           </Row>
           <p className="note">
@@ -216,30 +193,22 @@ export const AddFacility: FC = ({}: Props) => {
         <div className="formAdd_btnGroup"></div>
 
         <div className="formAdd_btnGroup-btnCancel">
-          <Button className="formAdd_btnGroup-btnCancel--cancel">
-            {" "}
-            Hủy bỏ
-          </Button>
+          <Button className="formAdd_btnGroup-btnCancel--cancel">Hủy bỏ</Button>
         </div>
         <div className="formAdd_btnGroup-btnCreate">
           <Button
             className="formAdd_btnGroup-btnCreate--create"
             onClick={() => {
-              createFacility({
-                name,
-                id,
-                type,
-                address,
-                password,
-                username,
-                service,
-                connect,
-                active,
+              updateService({
+                name: name,
+                id: id,
+                des: des,
+                active: active,
               });
-              alert("Thêm thành công");
+              alert("Cập nhật thành công");
             }}
           >
-            Thêm thiết bị
+            Cập nhật
           </Button>
         </div>
       </div>

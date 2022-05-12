@@ -66,19 +66,19 @@ function LineChartMonth() {
                 >   
                     <defs>
                         <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#FE9E49" stopOpacity={0.8}/>
-                        <stop offset="95%" stopColor="#FE9E49" stopOpacity={0}/>
+                        <stop offset="5%" stopColor="#CEDDFF" stopOpacity={0.8}/>
+                        <stop offset="95%" stopColor="#CEDDFF" stopOpacity={0}/>
                         </linearGradient>
                         <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#FE9E49" stopOpacity={0.8}/>
-                        <stop offset="95%" stopColor="#FE9E49" stopOpacity={0}/>
+                        <stop offset="5%" stopColor="#CEDDFF" stopOpacity={0.8}/>
+                        <stop offset="95%" stopColor="#CEDDFF" stopOpacity={0}/>
                         </linearGradient>
                     </defs>
-                    <CartesianGrid  stroke='#ECE9F1'/>
+                    <CartesianGrid  stroke='#CEDDFF'/>
                     <XAxis dy={20} dataKey="name" stroke="#888888"/>
                     <YAxis dx={-40} stroke="#888888" dataKey="" tickCount={5} domain={[0,'auto']}/>
                     <Tooltip cursor={false}/>
-                    <Area strokeWidth={4} radius="12" type="monotone" dataKey="uv" stroke="#FF993C" fillOpacity={0.3} fill="url(#colorUv)" />
+                    <Area strokeWidth={4} radius="12" type="monotone" dataKey="uv" stroke="#5185F7" fillOpacity={0.3} fill="url(#colorUv)" />
                 </AreaChart>
             </ResponsiveContainer>
         </div>

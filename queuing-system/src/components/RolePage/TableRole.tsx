@@ -42,7 +42,7 @@ export const TableRole:FC = (props: Props) => {
                   <td>{r.userUsed}</td>
                   <td>{r.description}</td>
                   <td  className="update">
-                    <Link to={`/updateFacility/${r.id}`} key={r.id}>
+                    <Link to={`/updateRole/${r.id}`} key={r.id}>
                       Cập nhật
                     </Link>
                   </td>

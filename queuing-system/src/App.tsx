@@ -15,6 +15,15 @@ import chart from './components/DashboardPage/Chart/ChartWeek';
 import { AddFacility } from './components/FacilitiesPage/addFacility';
 import { DetailFacility } from './components/FacilitiesPage/detailFacility';
 import { UpdateFacility } from './components/FacilitiesPage/updateFacility';
+import { AddService } from './components/ServicePage/AddService';
+import { DetailService } from './components/ServicePage/DetailService';
+import { UpdateService } from './components/ServicePage/UpdateService';
+import { AddNumber } from './components/NumberPage/AddNumber';
+import { DetailNumber } from './components/NumberPage/DetailNumber';
+import AddRole from './components/RolePage/AddRole';
+import { AddAccount } from './components/AccountPage/AddAccount';
+import { UpdateRole } from './components/RolePage/UpdateRole';
+import { UpdateAccount } from './components/AccountPage/UpdateAccount';
 
 
 
@@ -38,6 +47,15 @@ render(){
       <Route path="/add-facility" component={AddFacility}/>
       <Route path="/detailFacility" component={DetailFacility}/>
       <Route path="/updateFacility" component={UpdateFacility}/>
+      <Route path="/add-service" component={AddService}/>
+      <Route path="/detailService" component={DetailService}/>
+      <Route path="/updateService" component={UpdateService}/>
+      <Route path="/addNumber" component={AddNumber}/>
+      <Route path="/detailNumber" component={DetailNumber}/>
+      <Route path="/addRole" component={AddRole}/>
+      <Route path="/addAccount" component={AddAccount}/>
+      <Route path="/updateRole" component={UpdateRole}/>
+      <Route path="/updateAccount" component={UpdateAccount}/>
     </Switch>
     </BrowserRouter>
  

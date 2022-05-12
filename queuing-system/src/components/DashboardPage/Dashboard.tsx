@@ -1,5 +1,5 @@
 import { Card, Col, Row, Select } from "antd";
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import Calendar from "react-calendar";
 import { Link } from "react-router-dom";
 import AccountUserLeft from "../AccountUserPage/AccountUserLeft";
@@ -13,15 +13,17 @@ import { CardModalHigher } from "./CardModel/CardModelHigher";
 import LineChartWeek from "./Chart/ChartWeek";
 import LineChartDay from "./Chart/ChartDay";
 import LineChartMonth from "./Chart/ChartMonth";
-import CardActive from './Card/CardActive';
+import CardActive from "./Card/CardActive";
 import CardWaiting from "./Card/CardWaiting";
-import CardCancel from './Card/CardCancel';
+import CardCancel from "./Card/CardCancel";
 import CardUsed from "./Card/CardUsed";
+import SvgNotification from "../../assets/iconComponent/notification";
 
 export const Dashboard: FC = () => {
   const { Option } = Select;
   const [select, setSelect] = useState<any>(<LineChartDay />);
   const [selectValue, setSelectValue] = useState<string>("day");
+  const [open, setOpen] = useState<boolean>(false);
 
   const handleChange = (e: any) => {
     setSelectValue(e.value);
@@ -35,33 +37,71 @@ export const Dashboard: FC = () => {
       setSelect(<LineChartMonth />);
     }
 
-    console.log(selectValue); // { value: "lucy", key: "lucy", label: "Lucy (101)" }
+    console.log(selectValue);
   }, [selectValue]);
 
+  const notify = [
+    {
+      name: " Nguyễn Thị Thùy Dung",
+      time: "12h20 ngày 30/11/2021",
+    },
+    {
+      name: " Nguyễn Thị Thùy Dung",
+      time: "12h20 ngày 30/11/2021",
+    },
+    {
+      name: " Nguyễn Thị Thùy Dung",
+      time: "12h20 ngày 30/11/2021",
+    },
+    {
+      name: " Nguyễn Thị Thùy Dung",
+      time: "12h20 ngày 30/11/2021",
+    },
+    {
+      name: " Nguyễn Thị Thùy Dung",
+      time: "12h20 ngày 30/11/2021",
+    },
+    {
+      name: " Nguyễn Thị Thùy Dung",
+      time: "12h20 ngày 30/11/2021",
+    },
+  ];
   return (
     <>
       <SideBar />
       <div className="dashboard">
-      <div className="dashboard_title"><h1> Dashboard </h1> </div>
-      <div className="dashboard titleDash"> <h1> Biểu đồ cấp số </h1></div>  
-        <div className="dashboard dashL">   
-          <div className="dashboard dashL_top" >
-          <CardActive/>
-          <CardWaiting/>
-          <CardCancel/>
-          <CardUsed/>
+        <div className="dashboard_title">
+          <h1> Dashboard </h1>{" "}
+        </div>
+        <div className="dashboard titleDash">
+          {" "}
+          <h1> Biểu đồ cấp số </h1>
+        </div>
+        <div className="dashboard dashL">
+          <div className="dashboard dashL_top">
+            <CardActive />
+            <CardWaiting />
+            <CardCancel />
+            <CardUsed />
           </div>
           <div className="dashboard dashL_bottom">
             <div className="dashboard dashL_bottom_top">
               <div className="dashboard dashL_bottom_top--title">
-                <span className="dashboard dashL_bottom_top--title-top">Bảng thống kê hằng ngày</span>
-                <span className="dashboard dashL_bottom_top--title-bottom">Tháng 12/2021</span>
+                <span className="dashboard dashL_bottom_top--title-top">
+                  Bảng thống kê hằng ngày
+                </span>
+                <span className="dashboard dashL_bottom_top--title-bottom">
+                  Tháng 12/2021
+                </span>
               </div>
 
               <div className="dashboard dashL_bottom_top--select">
-                <span className="dashboard dashL_bottom_top--select-title"> Xem theo</span>
+                <span className="dashboard dashL_bottom_top--select-title">
+                  {" "}
+                  Xem theo
+                </span>
                 <Select
-                suffixIcon={<img src={require("../../assets/arrow.png")}/>}
+                  suffixIcon={<img src={require("../../assets/arrow.png")} />}
                   labelInValue
                   defaultValue={{ value: "day" }}
                   style={{ width: 120 }}
@@ -78,6 +118,29 @@ export const Dashboard: FC = () => {
         </div>
 
         <div className="dashboard dashR">
+          <span
+            className="iconNotification"
+            onClick={() => setOpen((open) => !open)}
+          >
+            <SvgNotification />
+          </span>
+          <div className={open ? "open" : "closed"}>
+            <div className="open_title">
+              {" "}
+              <h1>Thông báo </h1>
+            </div>
+
+            {notify.map((item, index) => {
+              return (
+                <Col className="open_content" key={index} span={24}>
+                  <p className="open_content--top">Người dùng:{item.name}</p>
+                  <p className="open_content--bottom">
+                    Thời gian nhận số: {item.time}
+                  </p>
+                </Col>
+              );
+            })}
+          </div>
           <Link to="/account-user">
             <div className="dashboard dashR top">
               <AccountUserLeft />
