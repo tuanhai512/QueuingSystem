@@ -44,19 +44,27 @@ export const UpdateRole: FC = () => {
 
   useEffect(() => {
     setUserUsed(6);
-   //setId( findID(id));
+    findId();
+    console.log(id);
   }, []);
 
-  function findID(id:any) {
-    const Findid = roleCollection
-      .where(firebase.firestore.FieldPath.documentId(), "==", id)
-      .get();
-    console.log(Findid);
+  function findId() {
+    var url = window.location.pathname;
+    var idN = url.substring(url.lastIndexOf("/") + 1);
+    return setId(idN);
   }
+
+  // function findID(id: any) {
+  //   const Findid = roleCollection
+  //     .where(firebase.firestore.FieldPath.documentId(), "==", id)
+  //     .get();
+  //   console.log(Findid);
+  // }
+
   function updateRole(newData: any, id: any) {
     roleCollection
       .doc(id)
-      .update(newData)
+      .update(newData.id)
       .catch((err: any) => {
         alert(err);
         console.log(err);

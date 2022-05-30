@@ -44,6 +44,8 @@ export const AddRole: FC = ({}: Props) => {
   useEffect(() => {
     setUserUsed(6);
   }, []);
+
+
   function createRole(newData: any) {
     roleCollection
       .doc()
@@ -227,7 +229,7 @@ export const AddRole: FC = ({}: Props) => {
                   name,
                   userUsed,
                   description,
-                  id: uuidv4(),
+                 
                 });
                 alert("Thêm thành công");
               }}

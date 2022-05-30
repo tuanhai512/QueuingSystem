@@ -146,7 +146,10 @@ export const Role: FC = ({}: Props) => {
                           <td>{r.userUsed}</td>
                           <td>{r.description}</td>
                           <td className="update">
-                            <Link to={`/updateRole/${r.id}`} key={r.id}>
+                            <Link
+                              to={`/updateRole/${roleCollection.doc().id}`}
+                              key={roleCollection.doc().id}
+                            >
                               Cập nhật
                             </Link>
                           </td>
